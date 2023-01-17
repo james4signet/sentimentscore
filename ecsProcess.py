@@ -1,6 +1,12 @@
+# python script with error handling
+
 def extract_classify_sentiment(url):
-    # Make a GET request to the website
-    response = requests.get(url)
+    try:
+        # Make a GET request to the website
+        response = requests.get(url)
+    except requests.exceptions.RequestException as e:
+        # handle errors
+        return e
 
     # Get the text from the website
     text = response.text
@@ -11,11 +17,15 @@ def extract_classify_sentiment(url):
         type=enums.Document.Type.PLAIN_TEXT
     )
 
-    # Use the client to analyze the text
-    entities = client.analyze_entities(document).entities
-    phrases = client.analyze_syntax(document).tokens
-    classify_text = client.classify_text(document).categories
-    sentiment = client.analyze_sentiment(document).document_sentiment
+    try:
+        # Use the client to analyze the text
+        entities = client.analyze_entities(document).entities
+        phrases = client.analyze_syntax(document).tokens
+        classify_text = client.classify_text(document).categories
+        sentiment = client.analyze_sentiment(document).document_sentiment
+    except HttpError as error:
+        # handle errors
+        return error
 
     # Create a dictionary to store the keywords and their salience scores
     keywords = {}
