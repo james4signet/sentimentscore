@@ -10,13 +10,13 @@ First, you will need to have a Google Cloud account and create a project.
 
 * Install the Google Cloud SDK on your computer, which will allow you to interact with the API using the command line.
 
-* Once you have the SDK set up, you can use the following command to set the credentials for your project:
+###  Once you have the SDK set up, you can use the following command to set the credentials for your project:
 
 ```gcloud auth application-default login```
-Install the google-cloud-language python library by running this command in your terminal:
+
+### Install the google-cloud-language python library by running this command in your terminal:
 
 ```pip install google-cloud-language```
-copy the script that I provided in the previous answer and paste it in your local python file.
 
 * Replace https://www.example.com/posts with the url of the website you want to extract keywords and key phrases from.
 
